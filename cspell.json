@@ -1,0 +1,46 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "ignorePaths": [
+    "node_modules",
+    "**/node_modules/**",
+    "uploads",
+    "dist",
+    "**/.vite/**",
+    "**/package-lock.json"
+  ],
+  "ignoreRegExpList": [
+    "/menu_\\d+/",
+    "/food_\\d+/",
+    "/_[a-z0-9]+\\.(png|jpg|jpeg|svg|webp)/i"
+  ],
+  "words": [
+    "bcrypt",
+    "cspell",
+    "fooddel",
+    "fooddisplay",
+    "foodroute",
+    "jsonwebtoken",
+    "mongoose",
+    "multer",
+    "navbar",
+    "orderpage",
+    "originalname",
+    "storecontext",
+    "toastify",
+    "uploads",
+    "usercontroller",
+    "usermodel",
+    "userroute",
+    "ykgr",
+    "shanthan",
+    "stbnlnv",
+    "Buttter",
+    "Pulao",
+    "Somen",
+    "Lasagna",
+    "Zucchini",
+    "deletable",
+    "signup"
+  ]
+}

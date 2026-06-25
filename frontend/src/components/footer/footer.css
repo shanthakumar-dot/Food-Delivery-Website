@@ -1,0 +1,75 @@
+.footer {
+    color: #d9d9d9;
+    background-color: #323232;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+     padding:80px;
+    margin-top: 100px;
+}
+
+
+.footer-content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    gap: 80px;
+}
+.footer-content-left, 
+.footer-content-right, 
+.footer-content-center {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+.footer-content-left li, 
+.footer-content-right li, 
+.footer-content-center li {
+    list-style: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.footer-content-center h2, 
+.footer-content-right h2 {
+    color: white;
+}
+.footer-social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social-icons img {
+    width: 40px;
+    cursor: pointer;
+}
+.footer hr {
+    width: 100%;
+    height: 2px;
+    margin: 20px 0px;
+    background-color: grey;
+    border: none;
+}
+
+
+@media (max-width: 750px) {
+  .footer {
+    padding: 40px 4vw; /* Reduce large padding gaps on tiny phone displays */
+  }
+
+  /* Unsnap columns and stack them cleanly down the screen */
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+  }
+
+  /* Release the desktop 50% restriction so text wraps naturally on mobile */
+  .footer-content-left {
+    max-width: 100%;
+  }
+  footer-copyright {
+  text-align: center;
+}
+}

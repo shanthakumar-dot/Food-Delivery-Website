@@ -1,0 +1,81 @@
+.header {
+    height: 34vw;
+    margin: 30px auto;
+    background: url('/header_img.png') no-repeat;
+    background-size: contain;
+    position: relative;
+}
+.header-contents {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1.2vw;
+    max-width: 50%;
+    bottom: 10%;
+    left: 6vw;
+    animation: fadeIn 3s;
+}
+.header-contents h2 {
+    font-weight: 500;
+    color: white;
+    font-size: max(4vw, 20px);
+}
+
+.header-contents p {
+    color: white;
+    font-size: max(1vw, 10px);
+}
+.header-contents button {
+    border: none;
+    color: #877676;
+    font-weight: 500;
+    padding: 1vw 2.3vw;
+    background-color: white;
+    font-size: max(1vw, 13px);
+    border-radius: 50px;
+    cursor: pointer;
+}
+/* ==========================================================================
+   HEADER RESPONSIVE STYLES
+   ========================================================================== */
+
+/* Laptop / Small Desktop Breakpoint */
+@media (max-width: 1050px) {
+  .header-contents {
+    max-width: 65%; /* Expand text width boundary slightly as container shrinks */
+  }
+}
+
+/* Tablet & Mobile Breakpoint */
+@media (max-width: 750px) {
+  .header {
+    height: 38vw; /* Slightly increase height ratio to keep image banner prominent */
+    margin: 20px auto;
+  }
+
+  .header-contents {
+    max-width: 100%; /* Allow content to span full horizontal container width */
+    right: 6vw;      /* Mirror padding parameters safely on touch device viewports */
+    bottom: 5%;      /* Re-center the card alignment lower into the container */
+    gap: 2.5vw;      /* Tighten element separation for smaller aspect ratios */
+  }
+
+  /* Hide description copy on standard phone viewports to prevent text clipping */
+  .header-contents p {
+    display: none; 
+  }
+
+  /* Scale structural buttons down cleanly for fluid touch interaction targets */
+  .header-contents button {
+    padding: 2vw 4vw;
+    font-size: 12px;
+  }
+}
+
+/* Extra Small Mobile Screen Breakpoint */
+@media (max-width: 400px) {
+  .header-contents h2 {
+    font-size: 18px; /* Force fallback rendering baseline for tight screens */
+  }
+}

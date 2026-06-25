@@ -1,0 +1,88 @@
+.verify-page {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 5%;
+}
+
+.verify-box {
+  text-align: center;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 40px 32px;
+  max-width: 380px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.verify-box h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.verify-box p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+/* Spinner shown while verifying */
+.verify-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #ffe0d2;
+  border-top-color: #ff6b35;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  animation: verify-spin 0.8s linear infinite;
+}
+
+@keyframes verify-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Success icon */
+.verify-icon-success {
+  width: 60px;
+  height: 60px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border-radius: 50%;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+/* Failure icon */
+.verify-icon-failed {
+  width: 60px;
+  height: 60px;
+  background: #fdecea;
+  color: #c0392b;
+  border-radius: 50%;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.verify-box button {
+  margin-top: 20px;
+  padding: 10px 28px;
+  background: #ff6b35;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.verify-box button:hover {
+  background: #e55a25;
+}
