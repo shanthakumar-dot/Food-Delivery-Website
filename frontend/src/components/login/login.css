@@ -3,7 +3,7 @@ login-popup {
   z-index: 1;
   width: 100%;
   height: 100%;
-  background-color: #00000090; /* Semi-transparent black background */
+  background-color: #00000090;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,7 @@ login-popup {
    ========================================================================== */
 .login-popup-container {
   place-self: center;
-  width: max(23vw, 330px); /* Keeps it wide on desktop but bounded on mobile */
+  width: max(23vw, 330px);
   color: #808080;
   background-color: white;
   display: flex;
@@ -23,10 +23,9 @@ login-popup {
   padding: 25px 30px;
   border-radius: 8px;
   font-size: 14px;
-  animation: fadeIn 0.5s ease-out; /* Smooth modal entrance */
+  animation: fadeIn 0.5s ease-out;
 }
 
-/* --- Title Section (Header & Close Button) --- */
 .login-popup-title {
   display: flex;
   justify-content: space-between;
@@ -43,7 +42,6 @@ login-popup {
   cursor: pointer;
 }
 
-/* --- Input Fields Structure --- */
 .login-popup-inputs {
   display: flex;
   flex-direction: column;
@@ -57,7 +55,6 @@ login-popup {
   border-radius: 4px;
 }
 
-/* --- Form Submit Button --- */
 .login-popup-container button {
   border: none;
   padding: 10px;

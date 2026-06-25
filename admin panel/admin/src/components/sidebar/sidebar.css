@@ -3,7 +3,6 @@
   min-height: 100vh;
   border: 1.5px solid #a9a9a9;
   border-top: 0;
-  
 }
 
 .sidebar-options {
@@ -27,8 +26,6 @@
   color: inherit;
 }
 
-
-
 .sidebar-option p {
   display: none;
 }
@@ -39,7 +36,6 @@
   }
 }
 
-/* React Router active state styling */
 .sidebar-option.active {
   background-color: #fff0ed;
   border-color: #ff4c24;

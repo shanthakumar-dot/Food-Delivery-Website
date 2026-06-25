@@ -67,7 +67,6 @@
   overflow: hidden;
 }
 
-/* Header */
 .order-card-header {
   padding: 15px;
   background: #f5f5f5;
@@ -86,7 +85,6 @@
   color: #666;
 }
 
-/* Status Badges */
 .status-badge {
   padding: 4px 8px;
   border-radius: 4px;
@@ -96,10 +94,22 @@
   background: #e0e0e0;
 }
 
-.status-badge.pending { background: #ffeeba; color: #856404; }
-.status-badge.preparing { background: #b8daff; color: #004085; }
-.status-badge.delivered { background: #c3e6cb; color: #155724; }
-.status-badge.cancelled { background: #f5c6cb; color: #721c24; }
+.status-badge.pending {
+  background: #ffeeba;
+  color: #856404;
+}
+.status-badge.preparing {
+  background: #b8daff;
+  color: #004085;
+}
+.status-badge.delivered {
+  background: #c3e6cb;
+  color: #155724;
+}
+.status-badge.cancelled {
+  background: #f5c6cb;
+  color: #721c24;
+}
 
 /* ==========================================================================
    Items List
@@ -169,7 +179,6 @@
   margin-left: 10px;
 }
 
-/* Footer */
 .order-card-footer {
   padding: 15px;
   border-top: 1px solid #eee;
@@ -217,5 +226,5 @@
   padding: 10px 20px;
   border-radius: 4px;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }

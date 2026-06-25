@@ -1,4 +1,4 @@
-import  { useContext } from "react";
+import { useContext } from "react";
 import "./fooddisplay.css";
 import { StoreContext } from "../../context/storecontext";
 import { assets } from "../../assets/assets/assets"; // Double-check this path!
@@ -7,7 +7,6 @@ const FoodDisplay = ({ category }) => {
   const { food_list, cartItems, addToCart, removeFromCart, url } =
     useContext(StoreContext);
 
-  // Guard clause in case food_list hasn't loaded yet
   if (!food_list) return <p>Loading dishes...</p>;
 
   return (
@@ -52,7 +51,7 @@ const FoodDisplay = ({ category }) => {
               <div className="food-item-info">
                 <div className="food-item-name-rating">
                   <p>{item.name}</p>
-                  {/* Fixed typo from rating_starts to rating_stars if applicable */}
+
                   <img
                     src={assets.rating_stars || assets.rating_starts}
                     alt="Rating stars"

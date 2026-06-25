@@ -1,10 +1,10 @@
-import { useContext, } from "react";
+import { useContext } from "react";
 import "./cart.css";
 import { StoreContext } from "../../context/storecontext";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cartItems, food_list, removeFromCart, addToCart,url } =
+  const { cartItems, food_list, removeFromCart, addToCart, url } =
     useContext(StoreContext);
   const navigate = useNavigate();
 
@@ -30,7 +30,6 @@ const Cart = () => {
     <div className="cart">
       <h2>Your Cart</h2>
 
-      {/* Table */}
       <div className="cart-table-wrapper">
         <table className="cart-table">
           <thead>
@@ -48,7 +47,7 @@ const Cart = () => {
               <tr key={item._id}>
                 <td>
                   <img
-                    src={url+"/images/"+item.image}
+                    src={url + "/images/" + item.image}
                     alt={item.name}
                     className="cart-img"
                   />
@@ -80,7 +79,6 @@ const Cart = () => {
         </table>
       </div>
 
-      {/* Summary */}
       <div className="cart-summary">
         <div className="cart-summary-box">
           <h3>Order Summary</h3>

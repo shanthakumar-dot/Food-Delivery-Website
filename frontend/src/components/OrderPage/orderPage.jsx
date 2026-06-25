@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import "./orderPage.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { StoreContext } from "../../context/storecontext";
-import axios from "axios"; 
+import axios from "axios";
 
 const OrderPage = () => {
   const { state } = useLocation();
@@ -24,7 +24,7 @@ const OrderPage = () => {
   const handlePlaceOrder = async () => {
     if (!form.name || !form.phone || !form.address) {
       alert("Please fill in all fields");
-      return; 
+      return;
     }
 
     const orderItems = [];
@@ -48,26 +48,25 @@ const OrderPage = () => {
       deliveryFee: Number(deliveryFee),
       total: Number(total),
       paymentMethod: form.payment,
-      // Note: Your authMiddleware automatically appends 'userid' or 'userId' 
-      // from the token header directly on the backend server.
     };
 
     try {
-      const response = await axios.post(
-        url + "/api/order/place",
-        orderData,
-        { headers: { token } } 
-      );
+      const response = await axios.post(url + "/api/order/place", orderData, {
+        headers: { token },
+      });
 
       if (response.data.success) {
         alert(response.data.message);
-        setPlaced(true); 
+        setPlaced(true);
       } else {
         alert(response.data.message);
       }
     } catch (error) {
       console.error("Axios Error Details:", error.response?.data);
-      alert(error.response?.data?.message || "An error occurred while connecting to the server.");
+      alert(
+        error.response?.data?.message ||
+          "An error occurred while connecting to the server.",
+      );
     }
   };
 
@@ -96,7 +95,6 @@ const OrderPage = () => {
       <h2>Place Order</h2>
 
       <div className="order-layout">
-        {/* Left — Delivery form */}
         <div className="order-form-box">
           <h3>Delivery Details</h3>
           <input
@@ -144,7 +142,6 @@ const OrderPage = () => {
           </div>
         </div>
 
-        {/* Right — Order summary */}
         <div className="order-summary-box">
           <h3>Order Summary</h3>
 

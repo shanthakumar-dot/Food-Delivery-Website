@@ -2,23 +2,23 @@ import React from "react";
 import "./add.css";
 import { assets } from "../../../assets/assets";
 import { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 import { toast } from "react-toastify";
 
 const Add = () => {
-  const url = 'http://localhost:3000';
+  const url = "http://localhost:3000";
   const [image, setimage] = useState(false);
   const [data, setdata] = useState({
     name: "",
     description: "",
     price: "",
-    category: "salad"
+    category: "salad",
   });
 
   const onchange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setdata(prevData => ({ ...prevData, [name]: value }));
+    setdata((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const onsubmit = async (e) => {
@@ -33,12 +33,11 @@ const Add = () => {
     try {
       const response = await axios.post(`${url}/api/food/add`, formData);
       if (response.data.success) {
-        // Reset form data on successful submission
         setdata({
           name: "",
           description: "",
           price: "",
-          category: "salad"
+          category: "salad",
         });
         setimage(false);
         toast.success(response.data.message);
@@ -57,22 +56,45 @@ const Add = () => {
         <div className="add-img-upload flex col">
           <p>upload image</p>
           <label htmlFor="image">
-            <img src={image ? URL.createObjectURL(image) : assets.upload_area} alt="" />
+            <img
+              src={image ? URL.createObjectURL(image) : assets.upload_area}
+              alt=""
+            />
           </label>
-          <input onChange={(e) => setimage(e.target.files[0])} type="file" id="image" hidden required />
+          <input
+            onChange={(e) => setimage(e.target.files[0])}
+            type="file"
+            id="image"
+            hidden
+            required
+          />
         </div>
         <div className="add-product-name flex-col">
           <p>product name</p>
-          <input onChange={onchange} value={data.name} type="text" name='name' placeholder="type here..." required />
+          <input
+            onChange={onchange}
+            value={data.name}
+            type="text"
+            name="name"
+            placeholder="type here..."
+            required
+          />
         </div>
         <div className="add-product-description flex-col">
           <p>product description</p>
-          <textarea onChange={onchange} value={data.description} name="description" rows='6' placeholder="write description" required></textarea>
+          <textarea
+            onChange={onchange}
+            value={data.description}
+            name="description"
+            rows="6"
+            placeholder="write description"
+            required
+          ></textarea>
         </div>
         <div className="add-category-price">
           <div className="add-category flex-col">
             <p>product category</p>
-            <select onChange={onchange} value={data.category} name="category" >
+            <select onChange={onchange} value={data.category} name="category">
               <option value="salad">salad</option>
               <option value="rolls">rolls</option>
               <option value="desert">desert</option>
@@ -85,11 +107,20 @@ const Add = () => {
           </div>
           <div className="add-price flex-col">
             <p>product price</p>
-            <input onChange={onchange} value={data.price} type="number" name="price" placeholder="$20" required />
+            <input
+              onChange={onchange}
+              value={data.price}
+              type="number"
+              name="price"
+              placeholder="$20"
+              required
+            />
           </div>
         </div>
-        {/* Removed onSubmit attribute from button below */}
-        <button type="submit" className="add-btn">Add</button>
+
+        <button type="submit" className="add-btn">
+          Add
+        </button>
       </form>
     </div>
   );

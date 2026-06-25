@@ -4,7 +4,13 @@ import { StoreContext } from "../../context/storecontext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const STATUS_FILTERS = ["all", "pending", "preparing", "delivered", "cancelled"];
+const STATUS_FILTERS = [
+  "all",
+  "pending",
+  "preparing",
+  "delivered",
+  "cancelled",
+];
 
 const Orders = () => {
   const { url, token } = useContext(StoreContext);
@@ -15,7 +21,6 @@ const Orders = () => {
   const [loading, setLoading] = useState(true);
   const [toast, setToast] = useState("");
 
-  // Fetch orders
   useEffect(() => {
     if (!token) return;
     axios
@@ -32,7 +37,6 @@ const Orders = () => {
     setTimeout(() => setToast(""), 2000);
   };
 
-  // Adjust Quantity
   const changeQty = (orderId, itemId, delta) => {
     setOrders((prev) =>
       prev.map((order) => {
@@ -42,33 +46,40 @@ const Orders = () => {
           items: order.items.map((item) =>
             item.itemid === itemId
               ? { ...item, quantity: Math.max(1, item.quantity + delta) }
-              : item
+              : item,
           ),
         };
-      })
+      }),
     );
   };
 
-  // Remove Item
   const removeItem = (orderId, itemId) => {
     setOrders((prev) =>
       prev
         .map((order) => {
           if (order._id !== orderId) return order;
-          return { ...order, items: order.items.filter((i) => i.itemid !== itemId) };
+          return {
+            ...order,
+            items: order.items.filter((i) => i.itemid !== itemId),
+          };
         })
-        .filter((order) => order.items.length > 0)
+        .filter((order) => order.items.length > 0),
     );
     showToast("Item removed");
   };
 
-  // Cancel Order
   const cancelOrder = async (orderId) => {
     try {
-      const res = await axios.post(`${url}/api/userorder/cancel`, { orderId }, { headers: { token } });
+      const res = await axios.post(
+        `${url}/api/userorder/cancel`,
+        { orderId },
+        { headers: { token } },
+      );
       if (res.data.success) {
         setOrders((prev) =>
-          prev.map((o) => (o._id === orderId ? { ...o, status: "cancelled" } : o))
+          prev.map((o) =>
+            o._id === orderId ? { ...o, status: "cancelled" } : o,
+          ),
         );
         showToast("Order cancelled");
       }
@@ -77,21 +88,31 @@ const Orders = () => {
     }
   };
 
-  // Filter and Math Helpers
-  const filteredOrders = activeFilter === "all" 
-    ? orders 
-    : orders.filter((o) => o.status === activeFilter);
+  const filteredOrders =
+    activeFilter === "all"
+      ? orders
+      : orders.filter((o) => o.status === activeFilter);
 
-  const getSubtotal = (order) => order.items.reduce((s, i) => s + i.price * i.quantity, 0);
+  const getSubtotal = (order) =>
+    order.items.reduce((s, i) => s + i.price * i.quantity, 0);
 
-  if (!token) return <div className="orders-empty"><p>Please sign in to view orders</p></div>;
-  if (loading) return <div className="orders-empty"><p>Loading orders...</p></div>;
+  if (!token)
+    return (
+      <div className="orders-empty">
+        <p>Please sign in to view orders</p>
+      </div>
+    );
+  if (loading)
+    return (
+      <div className="orders-empty">
+        <p>Loading orders...</p>
+      </div>
+    );
 
   return (
     <div className="orders-page">
       <h2>My Orders</h2>
 
-      {/* Filter tabs */}
       <div className="orders-tabs">
         {STATUS_FILTERS.map((filter) => (
           <button
@@ -99,14 +120,20 @@ const Orders = () => {
             className={`orders-tab ${activeFilter === filter ? "active" : ""}`}
             onClick={() => setActiveFilter(filter)}
           >
-            {filter} ({orders.filter((o) => filter === "all" || o.status === filter).length})
+            {filter} (
+            {
+              orders.filter((o) => filter === "all" || o.status === filter)
+                .length
+            }
+            )
           </button>
         ))}
       </div>
 
-      {/* Orders List */}
       {filteredOrders.length === 0 ? (
-        <div className="orders-empty"><p>No orders found</p></div>
+        <div className="orders-empty">
+          <p>No orders found</p>
+        </div>
       ) : (
         <div className="orders-list">
           {filteredOrders.map((order) => {
@@ -118,14 +145,27 @@ const Orders = () => {
               <div className="order-card" key={order._id}>
                 <div className="order-card-header">
                   <span>ID: #{order._id.slice(-6).toUpperCase()}</span>
-                  <span className={`status-badge ${order.status}`}>{order.status}</span>
+                  <span className={`status-badge ${order.status}`}>
+                    {order.status}
+                  </span>
                   <p>{order.address}</p>
                 </div>
 
                 <div className="order-items">
                   {order.items.map((item) => (
                     <div className="order-item-row" key={item.itemid}>
-                      <div className="item-img" style={{ display:'flex', alignItems:'center', justifyContent:'center', background:'#f0f0f0', fontSize:'20px' }}>🍽️</div>
+                      <div
+                        className="item-img"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          background: "#f0f0f0",
+                          fontSize: "20px",
+                        }}
+                      >
+                        🍽️
+                      </div>
                       <div className="item-details">
                         <p>{item.name}</p>
                         <span>${item.price.toFixed(2)}</span>
@@ -133,10 +173,26 @@ const Orders = () => {
 
                       {isPending ? (
                         <div className="qty-control">
-                          <button onClick={() => changeQty(order._id, item.itemid, -1)} disabled={item.quantity <= 1}>-</button>
+                          <button
+                            onClick={() =>
+                              changeQty(order._id, item.itemid, -1)
+                            }
+                            disabled={item.quantity <= 1}
+                          >
+                            -
+                          </button>
                           <span>{item.quantity}</span>
-                          <button onClick={() => changeQty(order._id, item.itemid, 1)}>+</button>
-                          <button onClick={() => removeItem(order._id, item.itemid)} className="remove-btn">✕</button>
+                          <button
+                            onClick={() => changeQty(order._id, item.itemid, 1)}
+                          >
+                            +
+                          </button>
+                          <button
+                            onClick={() => removeItem(order._id, item.itemid)}
+                            className="remove-btn"
+                          >
+                            ✕
+                          </button>
                         </div>
                       ) : (
                         <span>Qty: {item.quantity}</span>
@@ -152,9 +208,16 @@ const Orders = () => {
                   </div>
                   <div className="actions">
                     {(isPending || order.status === "preparing") && (
-                      <button onClick={() => cancelOrder(order._id)} className="btn-cancel">Cancel</button>
+                      <button
+                        onClick={() => cancelOrder(order._id)}
+                        className="btn-cancel"
+                      >
+                        Cancel
+                      </button>
                     )}
-                    <button onClick={() => navigate("/myorders")}>Refresh</button>
+                    <button onClick={() => navigate("/myorders")}>
+                      Refresh
+                    </button>
                   </div>
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
 export const StoreContext = createContext(null);
@@ -57,8 +57,7 @@ const StoreContextProvider = ({ children }) => {
 
       console.log("Server Response:", response.data); // <-- Temporary debug line
 
-      // Fallback to handle either casing
-      const data = response.data.cartdata
+      const data = response.data.cartdata;
       if (data) {
         setCartItems(data);
       }

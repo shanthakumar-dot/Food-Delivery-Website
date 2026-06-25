@@ -1,77 +1,73 @@
-.navbar{
-    padding: 20px 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.navbar {
+  padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.navbar .logo{
-    width: 150px;
+.navbar .logo {
+  width: 150px;
 }
-.navbar_menu{
-    font-size: 16px;
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    color: rgb(52, 52, 167);
+.navbar_menu {
+  font-size: 16px;
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  color: rgb(52, 52, 167);
 }
-.navbar-right{
-    display: flex;
-    gap: 40px;
+.navbar-right {
+  display: flex;
+  gap: 40px;
 }
-.navbar-right  button{
-    background: transparent;
-    border: 1px solid tomato;
-    padding: 10px 30px;
-    color: rgb(99, 99, 159);
-    border-radius: 30px;
-    cursor: pointer;
+.navbar-right button {
+  background: transparent;
+  border: 1px solid tomato;
+  padding: 10px 30px;
+  color: rgb(99, 99, 159);
+  border-radius: 30px;
+  cursor: pointer;
 }
 
-.navbar_menu a{
-    cursor: pointer;
-    color: rgb(52, 52, 167);
+.navbar_menu a {
+  cursor: pointer;
+  color: rgb(52, 52, 167);
 }
 
 /* ==========================================================================
    NAVBAR RESPONSIVE STYLES
    ========================================================================== */
 
-/* Laptop / Small Desktop Breakpoint */
 @media (max-width: 1050px) {
   .navbar {
-    padding: 20px 0px; /* Slight padding normalization */
+    padding: 20px 0px;
   }
 
   .navbar .logo {
-    width: 140px; /* Scale down the main Tomato logo */
+    width: 140px;
   }
 
   .navbar_menu {
-    gap: 15px;      /* Tighten spacing between Home, Menu, Mobile-App, Contact Us */
-    font-size: 15px; /* Drop font size slightly to prevent wrapping */
+    gap: 15px;
+    font-size: 15px;
   }
 
   .navbar-right {
-    gap: 30px; /* Pull the search icon, cart basket, and sign-in button closer */
+    gap: 30px;
   }
 }
 
-/* Tablet & Mobile Breakpoint */
 @media (max-width: 750px) {
   .navbar .logo {
-    width: 120px; /* Make logo cleaner for mobile screens */
+    width: 120px;
   }
 
-  /* Hide standard text nav links entirely to prevent screen crowding */
   .navbar_menu {
-    display: none; 
+    display: none;
   }
 
   .navbar-right {
-    gap: 20px; /* Restructure layout alignment for right-side items */
+    gap: 20px;
   }
 
-  /* Scale interactive targets nicely for thumb/touch interactions */
   .navbar-right button {
     padding: 7px 16px;
     font-size: 14px;
@@ -83,7 +79,6 @@
   gap: 8px;
 }
 
-/* ── Search input: hidden by default, slides in from right ── */
 .navbar-search-input {
   width: 0;
   padding: 0;
@@ -91,18 +86,20 @@
   outline: none;
   background: transparent;
   opacity: 0;
-  transition: width 0.35s ease, opacity 0.3s ease, padding 0.3s ease;
+  transition:
+    width 0.35s ease,
+    opacity 0.3s ease,
+    padding 0.3s ease;
   font-size: 14px;
   color: #333;
   border-bottom: 2px solid transparent;
 }
 
-/* ── When active: expand and show ── */
 .navbar-search-input.active {
   width: 180px;
   padding: 4px 8px;
   opacity: 1;
-  border-bottom: 2px solid #ff6b35; /* change to your theme color */
+  border-bottom: 2px solid #ff6b35;
   background: #fff;
   border-radius: 4px 4px 0 0;
 }
@@ -112,30 +109,28 @@
   font-size: 13px;
 }
 
-/* ── Search icon: pointer cursor + slight hover effect ── */
 .navbar-search-icon-img {
   width: 22px;
   height: 22px;
   cursor: pointer;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .navbar-search-icon-img:hover {
   transform: scale(1.15);
   opacity: 0.8;
 }
-/* --- Add these styles to your existing Navbar CSS --- */
 
-/* Profile Icon Container */
 .navbar-profile {
   position: relative;
   cursor: pointer;
 }
 
-/* Profile Dropdown Menu */
 .nav-profile-dropdown {
   position: absolute;
-  display: none; /* Toggle to 'flex' via React state when clicked */
+  display: none;
   flex-direction: column;
   gap: 10px;
   background-color: #fff4f2;
@@ -148,12 +143,10 @@
   z-index: 1;
 }
 
-/* Show dropdown on hover (or manage via React active class) */
 .navbar-profile:hover .nav-profile-dropdown {
   display: flex;
 }
 
-/* Dropdown Menu Items */
 .nav-profile-dropdown li {
   display: flex;
   align-items: center;
@@ -170,7 +163,6 @@
   font-size: 14px;
 }
 
-/* Hover effect for text inside dropdown */
 .nav-profile-dropdown li:hover p {
   color: tomato;
 }

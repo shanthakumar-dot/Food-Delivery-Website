@@ -3,9 +3,6 @@ import fs from "fs";
 import path from "path";
 
 const addfood = async (req, res) => {
-  // image_filename gets the uploaded file's name from the request
-  // req.file is provided by multer (or similar middleware) when a file is uploaded
-  // `${req.file.filename}` is a template literal that converts the filename to a string
   let image_filename = `${req.file.filename}`;
 
   const food = new foodmodel({
@@ -24,7 +21,7 @@ const addfood = async (req, res) => {
     res.json({ success: false, message: "error" });
   }
 };
-// all food list
+
 const listFood = async (req, res) => {
   try {
     const foods = await foodmodel.find({});
@@ -34,7 +31,6 @@ const listFood = async (req, res) => {
     res.json({ success: false, message: "Error" });
   }
 };
-// remove food list
 
 const remfood = async (req, res) => {
   try {

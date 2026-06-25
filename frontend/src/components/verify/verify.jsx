@@ -1,18 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import "./verify.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { StoreContext } from "../../context/storecontext";
 import axios from "axios";
 
-// This page is the success_url / cancel_url target for Stripe Checkout.
-// Stripe redirects here with ?success=true|false&orderId=... in the URL,
-// and this component asks the backend to confirm the payment actually went through.
 const Verify = () => {
   const [searchParams] = useSearchParams();
   const success = searchParams.get("success");
   const orderId = searchParams.get("orderId");
 
-  const { url, token } = useContext(StoreContext);
+  const { url} = useContext(StoreContext);
   const navigate = useNavigate();
   const [status, setStatus] = useState("verifying"); // "verifying" | "success" | "failed"
 
@@ -38,10 +35,9 @@ const Verify = () => {
     if (orderId) {
       verifyPayment();
     } else {
-      setStatus("failed");
+      setTimeout(() => setStatus("failed"), 0);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [orderId, success]);
+  }, [orderId, success, url]); 
 
   useEffect(() => {
     if (status === "success") {

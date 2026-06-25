@@ -28,7 +28,6 @@
   margin-bottom: 6px;
 }
 
-/* Spinner shown while verifying */
 .verify-spinner {
   width: 48px;
   height: 48px;
@@ -40,10 +39,11 @@
 }
 
 @keyframes verify-spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-/* Success icon */
 .verify-icon-success {
   width: 60px;
   height: 60px;
@@ -57,7 +57,6 @@
   margin: 0 auto 16px;
 }
 
-/* Failure icon */
 .verify-icon-failed {
   width: 60px;
   height: 60px;

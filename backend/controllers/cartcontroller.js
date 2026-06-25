@@ -1,16 +1,12 @@
 import usermodel from "../models/usermodel.js";
 
-// --- ADD TO CART ---
 const addtocart = async (req, res) => {
   try {
     const { userid, itemId } = req.body; // Changed to itemID
 
-    // Validation to prevent "undefined" keys from being created in your DB
     if (!itemId) {
       return res.json({ success: false, message: "Missing itemID" });
     }
-
-    
 
     let userdata = await usermodel.findById(userid);
     if (!userdata) {
@@ -37,7 +33,6 @@ const addtocart = async (req, res) => {
   }
 };
 
-// --- REMOVE FROM CART ---
 const removecart = async (req, res) => {
   try {
     const { userid, itemId } = req.body; // Changed to itemID
@@ -50,12 +45,10 @@ const removecart = async (req, res) => {
     if (userdata.cartdata && userdata.cartdata[itemId]) {
       userdata.cartdata[itemId] -= 1;
 
-      // Clean up: delete the key entirely if quantity drops to 0
       if (userdata.cartdata[itemId] === 0) {
         delete userdata.cartdata[itemId];
       }
 
-      // FIX: Mark modified and save MUST happen BEFORE sending the response
       userdata.markModified("cartdata");
       await userdata.save();
 
@@ -69,12 +62,11 @@ const removecart = async (req, res) => {
   }
 };
 
-// --- GET CART ---
 const getcart = async (req, res) => {
   try {
     const { userid } = req.body;
     const userdata = await usermodel.findById(userid);
-    
+
     if (!userdata) {
       return res.json({ success: false, message: "User not found" });
     }

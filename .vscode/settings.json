@@ -27,7 +27,7 @@
   "terminal.integrated.env.windows": {},
   "git.autofetch": true,
   "workbench.statusBar.visible": false,
-  "workbench.colorTheme": "Dark Magic Night",
+  "workbench.colorTheme": "poimandres-darker",
   "window.menuBarVisibility": "compact",
   "workbench.layoutControl.enabled": false,
   "window.commandCenter": false,

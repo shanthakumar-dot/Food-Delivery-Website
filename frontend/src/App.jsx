@@ -6,7 +6,7 @@ import LoginPopup from './components/login/login'
 import { Routes, Route } from 'react-router-dom'
 import Cart from './components/cart/cart'
 import OrderPage from './components/orderPage/orderPage'
-import Orders from './components/orders/orders' // Make sure this path matches your file structure
+import Orders from './components/orders/orders' 
 import SearchPage from './components/search/search'
 import Verify from './components/verify/verify'
 
