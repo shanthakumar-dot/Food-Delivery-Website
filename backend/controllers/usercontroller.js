@@ -10,7 +10,7 @@ const createToken = (id) => {
 
 const login = async (req, res) => {
   const { email, password } = req.body;
-      
+
   try {
     const user = await userModel.findOne({ email });
     if (!user) {
@@ -33,38 +33,30 @@ const login = async (req, res) => {
 const register = async (req, res) => {
   const { name, email, password } = req.body;
 
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
-
-  const newuser = new userModel({
-    name: name,
-    email: email,
-    password: hashedPassword,
-  });
-
   try {
-    const exists = await userModel.findOne({ email });
-    if (exists) {
-      return res.json({ success: false, message: "user already exists" });
-    }
+    if (await userModel.findOne({ email }))
+      return res.json({ success: false, message: "User already exists" });
 
-    if (!validator.isEmail(email)) {
+    if (!validator.isEmail(email))
       return res.json({
         success: false,
-        message: "please enter the valid email",
+        message: "Please enter a valid email",
       });
-    }
 
-    if (password.length < 8) {
+    if (password.length < 8)
       return res.json({
         success: false,
-        message: "please enter the strong password",
+        message: "Password must be 8+ characters",
       });
-    }
 
-    const user = await newuser.save();
-    const token = createToken(user._id);
-    res.json({ success: true, token });
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    const user = await new userModel({
+      name,
+      email,
+      password: hashedPassword,
+    }).save();
+    res.json({ success: true, token: createToken(user._id) });
   } catch (error) {
     res.json({ success: false, message: error.message });
   }

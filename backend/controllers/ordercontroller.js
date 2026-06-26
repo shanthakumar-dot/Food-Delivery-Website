@@ -13,7 +13,7 @@ const placeorder = async (req, res) => {
       total,
       paymentMethod,
     } = req.body;
-    const userid = req.body.userid; // injected by authMiddleware from JWT token
+    const userid = req.body.userid;
 
     if (!name || !phone || !address || !items || items.length === 0) {
       return res.status(400).json({
@@ -30,13 +30,13 @@ const placeorder = async (req, res) => {
       name,
       phone,
       address,
-      items, // Array containing objects with itemId, name, price, quantity
+      items, 
       subtotal,
       deliveryFee,
       total,
       paymentMethod,
       status: orderStatus,
-      paymentStatus: paymentMethod === "online" ? false : false, // Will remain false until an online payment webhook verifies success
+      paymentStatus: paymentMethod === "online" ? false : false, 
     });
 
     await neworder.save();
@@ -59,10 +59,10 @@ const placeorder = async (req, res) => {
       });
     }
   } catch (error) {
-    console.error("Order Controller Error:", error.message); // ← change this
+    console.error("Order Controller Error:", error.message); 
     return res.json({
       success: false,
-      message: error.message, // ← send real error to frontend temporarily
+      message: error.message, 
     });
   }
 };

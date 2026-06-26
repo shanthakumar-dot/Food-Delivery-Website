@@ -1,11 +1,11 @@
 import express from "express";
-import authMiddleware from "../middlewar/auth.js"; // Make sure this path points to your token verifier middleware
-import { userOrders, cancelOrder } from "../controllers/userordercontroller.js";
 
-const userorderRouter = express.Router();
+import { register, login } from "../controllers/usercontroller.js";
 
-userorderRouter.post("/order", authMiddleware, userOrders);
+const userrouter = express.Router();
 
-userorderRouter.post("/cancel", authMiddleware, cancelOrder);
+userrouter.post("/login", login);
 
-export default userorderRouter;
+userrouter.post("/register",  register);
+
+export default userrouter;

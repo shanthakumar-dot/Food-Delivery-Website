@@ -2,7 +2,7 @@ import usermodel from "../models/usermodel.js";
 
 const addtocart = async (req, res) => {
   try {
-    const { userid, itemId } = req.body; // Changed to itemID
+    const { userid, itemId } = req.body; 
 
     if (!itemId) {
       return res.json({ success: false, message: "Missing itemID" });
@@ -35,7 +35,7 @@ const addtocart = async (req, res) => {
 
 const removecart = async (req, res) => {
   try {
-    const { userid, itemId } = req.body; // Changed to itemID
+    const { userid, itemId } = req.body; 
     const userdata = await usermodel.findById(userid);
 
     if (!userdata) {

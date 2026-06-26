@@ -48,7 +48,7 @@ const Add = () => {
       console.error(error);
       toast.error("Something went wrong with the server connection.");
     }
-  }; // Fixed the extra curly brace that was here originally
+  }; 
 
   return (
     <div className="add">

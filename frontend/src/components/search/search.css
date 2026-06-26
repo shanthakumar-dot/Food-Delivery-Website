@@ -1,21 +1,95 @@
-.search-page { padding: 20px 5%; }
+.search-page {
+  padding: 20px 5%;
+}
 
-.search-header { display: flex; gap: 10px; margin-bottom: 20px; }
-.search-header button { padding: 8px 14px; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; background: #fff; }
-.search-header input { flex: 1; padding: 10px 14px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; outline: none; }
+.search-header {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.search-header button {
+  padding: 8px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #fff;
+}
+.search-header input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+}
 
-.search-hint { text-align: center; color: #888; margin-top: 60px; font-size: 15px; }
+.search-hint {
+  text-align: center;
+  color: #888;
+  margin-top: 60px;
+  font-size: 15px;
+}
 
-.search-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+.search-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
 
-.search-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); position: relative; }
-.search-card img:first-child { width: 100%; height: 150px; object-fit: cover; }
-.search-card h3 { font-size: 15px; margin: 10px 12px 4px; }
-.search-card p { font-size: 12px; color: #777; margin: 0 12px; }
-.search-card .price { font-size: 14px; font-weight: 700; color: #ff6b35; margin: 8px 12px 12px; }
+.search-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+.search-card img:first-child {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+.search-card h3 {
+  font-size: 15px;
+  margin: 10px 12px 4px;
+}
+.search-card p {
+  font-size: 12px;
+  color: #777;
+  margin: 0 12px;
+}
+.search-card .price {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ff6b35;
+  margin: 8px 12px 12px;
+}
 
-.add-btn { position: absolute; bottom: 12px; right: 12px; width: 28px; cursor: pointer; }
+.add-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 28px;
+  cursor: pointer;
+}
 
-.counter { position: absolute; bottom: 12px; right: 12px; display: flex; align-items: center; gap: 6px; background: #fff; border-radius: 20px; padding: 4px 8px; box-shadow: 0 1px 6px rgba(0,0,0,0.15); }
-.counter img { width: 20px; cursor: pointer; }
-.counter p { font-size: 13px; font-weight: 600; margin: 0; }
+.counter {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 4px 8px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+}
+.counter img {
+  width: 20px;
+  cursor: pointer;
+}
+.counter p {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+}

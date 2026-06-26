@@ -55,7 +55,7 @@ const StoreContextProvider = ({ children }) => {
         { headers: { token } },
       );
 
-      console.log("Server Response:", response.data); // <-- Temporary debug line
+      console.log("Server Response:", response.data); 
 
       const data = response.data.cartdata;
       if (data) {

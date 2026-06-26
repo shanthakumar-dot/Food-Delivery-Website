@@ -9,9 +9,7 @@ login-popup {
   align-items: center;
 }
 
-/* ==========================================================================
-   2. Main Popup Container Design
-   ========================================================================== */
+
 .login-popup-container {
   place-self: center;
   width: max(23vw, 330px);
@@ -65,9 +63,6 @@ login-popup {
   cursor: pointer;
 }
 
-/* ==========================================================================
-   3. Terms Conditions & Switch Links
-   ========================================================================== */
 .login-popup-condition {
   display: flex;
   align-items: flex-start;
@@ -85,9 +80,6 @@ login-popup {
   cursor: pointer;
 }
 
-/* ==========================================================================
-   4. Entrance Keyframe Animation
-   ========================================================================== */
 @keyframes fadeIn {
   0% {
     opacity: 0;

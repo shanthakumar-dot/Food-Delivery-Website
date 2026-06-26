@@ -23,7 +23,7 @@ const orderschema = new mongoose.Schema({
   total: { type: Number, required: true },
 
   paymentMethod: { type: String, enum: ["cod", "online"], default: "cod" },
-  paymentStatus: { type: Boolean, default: false }, // true if online payment succeeds
+  paymentStatus: { type: Boolean, default: false },
   status: { type: String, default: "preparing" },
   date: { type: Date, default: Date.now },
 });
